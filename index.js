@@ -8,7 +8,7 @@ const cors = require("cors");
 const accountSid = process.env.ACCOUNT_SID;
 const authToken = process.env.AUTH_TOKEN;
 const twilioClient = Twilio(accountSid, authToken);
-const whatsappNumber = "whatsapp:+14155238886";
+const twilioWhatsappNumber = "whatsapp:************";
 
 const app = express();
 
@@ -115,7 +115,7 @@ async function sendToWhatsapp(message, userPhoneNumber) {
   try {
     const res = await twilioClient.messages.create({
       body: message,
-      from: whatsappNumber,
+      from: twilioWhatsappNumber,
       to: `whatsapp:${userPhoneNumber}`,
     });
     return res;
